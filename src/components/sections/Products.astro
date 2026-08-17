@@ -1,0 +1,67 @@
+---
+import { products } from '../../data/products';
+import Section from '../ui/Section.astro';
+import Card from '../ui/Card.astro';
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<Section id="productos" ariaLabelledBy="products-title" background="dark">
+  <div class="mx-auto max-w-2xl text-center">
+    <Badge class="mb-5">Productos</Badge>
+    <h2
+      id="products-title"
+      class="font-display text-3xl font-semibold tracking-tight text-cloud sm:text-4xl md:text-5xl"
+    >
+      Elige tu silencio
+    </h2>
+    <p class="mt-4 text-lg leading-relaxed text-silver">
+      Dos formas de escapar del ruido. Un mismo estándar de calma.
+    </p>
+  </div>
+
+  <div class="mt-16 grid gap-8 lg:grid-cols-2">
+    {
+      products.map((product) => (
+        <Card
+          data-reveal
+          class:list={['h-full', product.featured && 'ring-aurum/40']}
+        >
+          {product.featured && (
+            <Badge tone="aurum" class="absolute -top-3 right-6">Más vendido</Badge>
+          )}
+          <h3 class="font-display text-2xl font-semibold text-cloud">{product.name}</h3>
+          <p class="mt-1 text-sm font-medium text-aurum">{product.tagline}</p>
+          <p class="mt-4 text-sm leading-relaxed text-silver">{product.description}</p>
+
+          <p class="mt-7">
+            <span class="font-display text-4xl font-semibold tracking-tight text-cloud">
+              ${product.price}
+            </span>
+            <span class="ml-2 text-sm text-silver">USD · pago único</span>
+          </p>
+
+          <ul class="mt-6 space-y-3">
+            {
+              product.features.map((feature) => (
+                <li class="flex items-start gap-3 text-sm text-silver">
+                  <Icon name="check" size={16} class="mt-0.5 shrink-0 text-aurum" />
+                  {feature}
+                </li>
+              ))
+            }
+          </ul>
+
+          <Button
+            href="#"
+            variant={product.featured ? 'primary' : 'ghost'}
+            class="mt-8 w-full"
+          >
+            {product.cta}
+          </Button>
+        </Card>
+      ))
+    }
+  </div>
+</Section>

@@ -1,0 +1,83 @@
+---
+import { site } from '../../data/site';
+import Icon from '../ui/Icon.astro';
+---
+
+<div
+  data-menu
+  id="mobile-menu"
+  class="fixed inset-0 z-40 hidden lg:hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menú de navegación"
+>
+  <div class="absolute inset-0 bg-stone/95 backdrop-blur-xl"></div>
+
+  <nav
+    class="container-lumina relative flex h-full flex-col justify-center gap-1"
+    aria-label="Menú móvil"
+  >
+    {
+      site.nav.map((item) => (
+        <a
+          href={item.href}
+          class="py-3 font-display text-3xl font-semibold tracking-tight text-cloud transition-colors duration-200 hover:text-aurum"
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <a
+      href={site.cta.href}
+      class="mt-8 inline-flex w-full items-center justify-center rounded-full bg-aurum px-6 py-4 font-display font-medium text-stone transition-colors duration-200 hover:bg-aurum-soft"
+    >
+      {site.cta.label}
+    </a>
+    <div class="mt-10 flex gap-4">
+      {
+        site.socials.map((s) => (
+          <a
+            href={s.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.name}
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full text-silver ring-1 ring-white/10 transition-colors duration-200 hover:text-aurum hover:ring-aurum/40"
+          >
+            <Icon name={s.icon} size={18} />
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+
+  <button
+    data-menu-close
+    type="button"
+    class="absolute right-6 top-5 inline-flex h-10 w-10 items-center justify-center rounded-full text-cloud transition-colors hover:bg-white/5"
+    aria-label="Cerrar menú"
+  >
+    <Icon name="close" size={22} />
+  </button>
+</div>
+
+<style>
+  [data-menu] {
+    display: none;
+  }
+
+  [data-menu].is-open {
+    display: block;
+    animation: menu-in 0.3s var(--ease-lumina);
+  }
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

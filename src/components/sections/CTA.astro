@@ -1,0 +1,67 @@
+---
+import Section from '../ui/Section.astro';
+import Input from '../ui/Input.astro';
+import Button from '../ui/Button.astro';
+---
+
+<Section>
+  <div
+    class="relative overflow-hidden rounded-3xl bg-ink px-6 py-20 text-center ring-1 ring-white/10 sm:px-16"
+  >
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div
+        class="absolute -top-24 left-1/2 h-64 w-[480px] -translate-x-1/2 rounded-full bg-aurum/10 blur-[100px]"
+      ></div>
+    </div>
+
+    <div class="relative mx-auto max-w-xl">
+      <h2
+        class="font-display text-3xl font-semibold tracking-tight text-cloud sm:text-4xl md:text-5xl"
+      >
+        Encuentra tu silencio.
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-silver">
+        Sé de los primeros en escuchar Lumina One. Un correo cuando haya novedades. Sin spam.
+      </p>
+
+      <form data-newsletter class="mx-auto mt-8 max-w-md" novalidate>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <Input
+            id="newsletter-email"
+            name="email"
+            type="email"
+            label="Correo electrónico"
+            placeholder="tu@correo.com"
+            autocomplete="email"
+            required
+            srOnly
+            class="flex-1"
+          />
+          <Button type="submit" size="lg" class="shrink-0">Notificarme</Button>
+        </div>
+        <p
+          data-newsletter-status
+          class="mt-3 text-sm"
+          hidden
+        ></p>
+      </form>
+    </div>
+  </div>
+</Section>
+
+<style>
+  [data-newsletter-status][data-state='error'] {
+    color: #f87171;
+  }
+
+  [data-newsletter-status][data-state='success'] {
+    color: var(--color-aurum);
+  }
+</style>
+
+<script>
+  import { initNewsletter } from '../../scripts/newsletter';
+
+  const form = document.querySelector<HTMLFormElement>('[data-newsletter]');
+  if (form) initNewsletter(form);
+</script>

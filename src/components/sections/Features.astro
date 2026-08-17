@@ -1,0 +1,42 @@
+---
+import { features } from '../../data/features';
+import Section from '../ui/Section.astro';
+import Card from '../ui/Card.astro';
+import Badge from '../ui/Badge.astro';
+import Icon from '../ui/Icon.astro';
+---
+
+<Section id="tecnologia" ariaLabelledBy="features-title" background="dark">
+  <div class="mx-auto max-w-2xl text-center">
+    <Badge class="mb-5">Tecnología</Badge>
+    <h2
+      id="features-title"
+      class="font-display text-3xl font-semibold tracking-tight text-cloud sm:text-4xl md:text-5xl"
+    >
+      Ingeniería para la calma
+    </h2>
+    <p class="mt-4 text-lg leading-relaxed text-silver">
+      Cada detalle de Lumina One está diseñado para desaparecer y dejar solo el sonido.
+    </p>
+  </div>
+
+  <ul class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      features.map((feature, index) => (
+        <li data-reveal style={`--reveal-delay:${(index % 3) * 90}ms`}>
+          <Card class="h-full transition-transform duration-300 ease-lumina hover:-translate-y-1">
+            <span
+              class="inline-flex h-11 w-11 items-center justify-center rounded-full bg-aurum/10 text-aurum ring-1 ring-aurum/25"
+            >
+              <Icon name={feature.icon} size={20} />
+            </span>
+            <h3 class="mt-5 font-display text-lg font-semibold text-cloud">
+              {feature.title}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-silver">{feature.description}</p>
+          </Card>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

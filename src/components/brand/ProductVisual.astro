@@ -1,0 +1,50 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<!-- Ilustración SVG del producto: auriculares over-ear Lumina.
+     Es el único "asset" visual del hero/showcase: vectorial, ligero,
+     sin requests de imagen. -->
+<svg viewBox="0 0 320 260" fill="none" class:list={[className]} aria-hidden="true">
+  <defs>
+    <linearGradient id="lumina-band" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a3a3a" />
+      <stop offset="100%" stop-color="#181818" />
+    </linearGradient>
+    <radialGradient id="lumina-cup" cx="50%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#2e2e2e" />
+      <stop offset="100%" stop-color="#0f0f0f" />
+    </radialGradient>
+  </defs>
+
+  <!-- Diadema -->
+  <path
+    d="M62 152a98 98 0 0 1 196 0"
+    stroke="url(#lumina-band)"
+    stroke-width="15"
+    stroke-linecap="round"
+  />
+
+  <!-- Copa izquierda -->
+  <circle cx="82" cy="152" r="40" fill="url(#lumina-cup)" stroke="#3f3f3f" stroke-width="2" />
+  <circle cx="82" cy="152" r="26" stroke="var(--color-aurum)" stroke-width="1.2" opacity="0.8" />
+
+  <!-- Copa derecha -->
+  <circle cx="238" cy="152" r="40" fill="url(#lumina-cup)" stroke="#3f3f3f" stroke-width="2" />
+  <circle cx="238" cy="152" r="26" stroke="var(--color-aurum)" stroke-width="1.2" opacity="0.8" />
+
+  <!-- Alma interior -->
+  <path
+    d="M62 152c0-10 8-16 20-16m196 16c0-10-8-16-20-16"
+    stroke="#4a4a4a"
+    stroke-width="2"
+    opacity="0.6"
+  />
+
+  <!-- Detalle encendido -->
+  <circle cx="238" cy="152" r="3" fill="var(--color-aurum)" opacity="0.9" />
+</svg>

@@ -1,0 +1,51 @@
+---
+import { showcase } from '../../data/showcase';
+import Section from '../ui/Section.astro';
+import Badge from '../ui/Badge.astro';
+import ProductVisual from '../brand/ProductVisual.astro';
+---
+
+<Section id="showcase" ariaLabelledBy="showcase-title">
+  <div class="grid items-center gap-16 lg:grid-cols-2">
+    <div data-reveal class="relative order-2 lg:order-1">
+      <div
+        aria-hidden="true"
+        class="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-aurum/5 blur-3xl"
+      ></div>
+      <ProductVisual class="relative w-full animate-float-slow drop-shadow-2xl" />
+    </div>
+
+    <div class="order-1 lg:order-2">
+      <Badge tone="aurum" class="mb-5">{showcase.eyebrow}</Badge>
+      <h2
+        id="showcase-title"
+        class="font-display text-3xl font-semibold tracking-tight text-cloud sm:text-4xl md:text-5xl"
+      >
+        {showcase.title}
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-silver">{showcase.description}</p>
+
+      <dl class="mt-10 grid grid-cols-2 gap-x-8 gap-y-6">
+        {
+          showcase.specs.map((spec) => (
+            <div class="border-l-2 border-aurum/40 pl-4">
+              <dt class="text-xs uppercase tracking-wider text-silver/70">{spec.label}</dt>
+              <dd class="mt-1 font-display text-base font-medium text-cloud">
+                {spec.value}
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <div class="mt-10 rounded-2xl bg-aurum/5 p-6 ring-1 ring-aurum/20">
+        <h3 class="font-display text-lg font-semibold text-aurum">
+          {showcase.highlight.title}
+        </h3>
+        <p class="mt-1 text-sm leading-relaxed text-silver">
+          {showcase.highlight.description}
+        </p>
+      </div>
+    </div>
+  </div>
+</Section>

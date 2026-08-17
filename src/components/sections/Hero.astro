@@ -1,0 +1,74 @@
+---
+import { site } from '../../data/site';
+import Button from '../ui/Button.astro';
+import Badge from '../ui/Badge.astro';
+import Icon from '../ui/Icon.astro';
+import ProductVisual from '../brand/ProductVisual.astro';
+---
+
+<section class="relative overflow-hidden bg-stone">
+  <!-- Brillo ambiental -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+    <div
+      class="absolute left-1/2 top-[-18%] h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-aurum/10 blur-[130px]"
+    ></div>
+  </div>
+
+  <div
+    class="container-lumina relative flex min-h-[92svh] flex-col items-center justify-center py-28 text-center"
+  >
+    <Badge tone="aurum" class="mb-7">{site.hero.badge}</Badge>
+
+    <h1
+      class="max-w-4xl font-display text-5xl font-semibold leading-[1.05] tracking-tight text-cloud sm:text-6xl md:text-7xl"
+    >
+      {site.hero.title.start}{' '}
+      <span class="text-gradient-aurum">{site.hero.title.accent}</span>
+    </h1>
+
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-silver">
+      {site.hero.subtitle}
+    </p>
+
+    <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+      <Button href="#productos" size="lg">
+        {site.hero.primaryCta}
+        <Icon name="arrow-right" size={18} />
+      </Button>
+      <Button href="#tecnologia" variant="ghost" size="lg">
+        {site.hero.secondaryCta}
+      </Button>
+    </div>
+
+    <!-- Producto flotante con anillos -->
+    <div class="relative mt-20">
+      <div
+        aria-hidden="true"
+        class="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 sm:h-96 sm:w-96"
+      >
+        <div class="animate-ring absolute inset-0 rounded-full border border-aurum/25"></div>
+        <div
+          class="animate-ring absolute inset-0 rounded-full border border-aurum/15"
+          style="animation-delay: 1.4s"
+        ></div>
+      </div>
+      <ProductVisual class="relative w-72 animate-float drop-shadow-2xl sm:w-96" />
+    </div>
+
+    <!-- Stats -->
+    <dl
+      class="mt-20 grid w-full max-w-3xl grid-cols-3 gap-6 border-t border-white/10 pt-10"
+    >
+      {
+        site.hero.stats.map((stat) => (
+          <div>
+            <dt class="text-xs uppercase tracking-wider text-silver/70">{stat.label}</dt>
+            <dd class="mt-1 font-display text-2xl font-semibold text-cloud sm:text-3xl">
+              {stat.value}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>

@@ -1,0 +1,118 @@
+---
+export type IconName =
+  | 'waves'
+  | 'battery'
+  | 'equalizer'
+  | 'feather'
+  | 'bluetooth'
+  | 'leaf'
+  | 'arrow-right'
+  | 'check'
+  | 'plus'
+  | 'minus'
+  | 'menu'
+  | 'close'
+  | 'star'
+  | 'moon'
+  | 'mail'
+  | 'instagram'
+  | 'x'
+  | 'tiktok'
+  | 'youtube';
+
+interface Props {
+  name: IconName;
+  size?: number;
+  class?: string;
+  strokeWidth?: number;
+  label?: string;
+}
+
+const { name, size = 24, class: className, strokeWidth = 1.8, label } = Astro.props;
+
+interface IconDef {
+  d: string[];
+  filled?: boolean;
+}
+
+const icons: Record<IconName, IconDef> = {
+  waves: { d: ['M2 12c1.7-3.4 4-3.4 5.7 0s4 3.4 5.7 0 4-3.4 5.7 0'] },
+  battery: {
+    d: [
+      'M3 8.5A1.5 1.5 0 0 1 4.5 7h13A1.5 1.5 0 0 1 19 8.5v7a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 3 15.5z',
+      'M21.5 10.5v3',
+      'M6.5 10.5v3',
+      'M10 10.5v3',
+    ],
+  },
+  equalizer: { d: ['M5 5v6', 'M5 15v4', 'M12 5v2', 'M12 11v8', 'M19 5v9', 'M19 18v1'] },
+  feather: {
+    d: [
+      'M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z',
+      'M16 8 2 22',
+      'M17.5 15H9',
+    ],
+  },
+  bluetooth: { d: ['m7 7 10 10-5 5V2l5 5L7 17'] },
+  leaf: {
+    d: [
+      'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z',
+      'M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12',
+    ],
+  },
+  'arrow-right': { d: ['M5 12h14', 'm12 5 7 7-7 7'] },
+  check: { d: ['M20 6 9 17l-5-5'] },
+  plus: { d: ['M5 12h14', 'M12 5v14'] },
+  minus: { d: ['M5 12h14'] },
+  menu: { d: ['M4 7h16', 'M4 12h16', 'M4 17h16'] },
+  close: { d: ['M6 6l12 12', 'M18 6 6 18'] },
+  star: { d: ['M12 2.5l2.9 5.9 6.5.94-4.7 4.58 1.11 6.47L12 17.9l-5.81 3.06 1.11-6.47L2.6 9.9l6.5-.94z'], filled: true },
+  moon: { d: ['M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z'] },
+  mail: {
+    d: [
+      'M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z',
+      'm3 7 9 6 9-6',
+    ],
+  },
+  instagram: {
+    d: [
+      'M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z',
+      'M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z',
+      'M17 7h.01',
+    ],
+  },
+  x: { d: ['M18.9 1.2h3.7l-8.1 9.3L24 22.8h-7.5l-5.9-7.7-6.7 7.7H.2l8.7-9.9L0 1.2h7.7l5.3 7 5.9-7z'], filled: true },
+  tiktok: {
+    d: [
+      'M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z',
+    ],
+    filled: true,
+  },
+  youtube: {
+    d: [
+      'M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z',
+    ],
+    filled: true,
+  },
+};
+
+const { d, filled = false } = icons[name];
+---
+
+<svg
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  class:list={[className]}
+  aria-hidden={label ? undefined : 'true'}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  focusable="false"
+  fill={filled ? 'currentColor' : 'none'}
+  stroke={filled ? 'none' : 'currentColor'}
+  stroke-width={filled ? undefined : strokeWidth}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  {d.map((path) => <path d={path} />)}
+</svg>

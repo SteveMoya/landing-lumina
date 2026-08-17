@@ -1,0 +1,48 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  label: string;
+  type?: 'text' | 'email' | 'password' | 'tel' | 'url' | 'number' | 'search';
+  placeholder?: string;
+  required?: boolean;
+  autocomplete?: string;
+  srOnly?: boolean;
+  class?: string;
+}
+
+const {
+  id,
+  name,
+  label,
+  type = 'text',
+  placeholder,
+  required = false,
+  autocomplete,
+  srOnly = false,
+  class: className,
+} = Astro.props;
+---
+
+<div class:list={['flex flex-col gap-2', className]}>
+  <label
+    for={id}
+    class:list={[
+      'text-sm font-medium text-silver',
+      srOnly && 'sr-only',
+    ]}
+  >
+    {label}
+    {required && <span class="text-aurum" aria-hidden="true"> *</span>}
+  </label>
+  <input
+    id={id}
+    name={name}
+    type={type}
+    placeholder={placeholder}
+    required={required}
+    autocomplete={autocomplete}
+    class="w-full rounded-full border border-white/15 bg-white/5 px-5 py-3 text-cloud placeholder:text-silver/60 transition-colors focus:border-aurum focus:outline-none"
+  />
+  <slot />
+</div>
