@@ -3,7 +3,6 @@ import { site } from '../../data/site';
 import Button from '../ui/Button.astro';
 import Badge from '../ui/Badge.astro';
 import Icon from '../ui/Icon.astro';
-import ProductVisual from '../brand/ProductVisual.astro';
 ---
 
 <section class="relative overflow-hidden bg-stone">
@@ -52,7 +51,14 @@ import ProductVisual from '../brand/ProductVisual.astro';
           style="animation-delay: 1.4s"
         ></div>
       </div>
-      <ProductVisual class="relative w-72 animate-float drop-shadow-2xl sm:w-96" />
+      <img
+        src="/hero-headphones.jpg"
+        alt="Auriculares premium Lumina sobre fondo neutro"
+        width="960"
+        height="960"
+        loading="lazy"
+        class="relative w-72 animate-float rounded-none object-cover drop-shadow-2xl sm:w-96"
+      />
     </div>
 
     <!-- Stats -->
