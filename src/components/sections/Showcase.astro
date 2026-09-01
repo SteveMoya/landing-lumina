@@ -8,6 +8,24 @@ import ProductVisual from '../brand/ProductVisual.astro';
 <Section id="showcase" ariaLabelledBy="showcase-title">
   <div class="grid items-center gap-16 lg:grid-cols-2">
     <div data-reveal class="relative order-2 lg:order-1">
+      <!-- Video decorativo ambiental de fondo (Lumina One en uso) -->
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute -inset-5 overflow-hidden rounded-[2.5rem] ring-1 ring-aurum/10"
+      >
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="/feature-headphones.jpg"
+          class="h-full w-full object-cover opacity-30 blur-sm saturate-[0.85]"
+        >
+          <source src="/bg-audio.mp4" type="video/mp4" />
+        </video>
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-b from-stone/60 via-stone/30 to-stone"></div>
+      </div>
       <div
         aria-hidden="true"
         class="absolute left-1/2 top-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-aurum/5 blur-3xl"

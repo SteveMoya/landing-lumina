@@ -20,6 +20,25 @@ import Icon from '../ui/Icon.astro';
     </p>
   </div>
 
+  <figure
+    data-reveal
+    class="relative mt-16 overflow-hidden rounded-3xl ring-1 ring-aurum/15 shadow-feature"
+  >
+    <img
+      src="/feature-headphones.jpg"
+      alt="Lumina One en reposo sobre piedra, a la espera del modo silencio"
+      class="h-72 w-full object-cover opacity-85 transition-transform duration-700 ease-lumina hover:scale-[1.02] sm:h-96"
+      loading="lazy"
+    />
+    <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-stone via-stone/10 to-transparent"></div>
+    <span
+      aria-hidden="true"
+      class="absolute right-6 top-6 rounded-full bg-aurum/10 px-4 py-1.5 font-display text-xs font-semibold uppercase tracking-widest text-aurum-soft ring-1 ring-aurum/30"
+    >
+      ANC −35 dB
+    </span>
+  </figure>
+
   <ul class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {
       features.map((feature, index) => (
