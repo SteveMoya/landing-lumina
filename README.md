@@ -4,6 +4,9 @@
 
 Landing page estática construida con **Astro 7 + Tailwind CSS v4 + TypeScript**, preparada para **Cloudflare Pages**. Forma parte de la serie de 9 landing pages por estilo de diseño (este proyecto: **Minimalismo / estilo Apple**).
 
+
+![Vista previa — 🍎 Lumina Landing](docs/preview.png)
+
 ---
 
 ## 🚀 Demo en producción
